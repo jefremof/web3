@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </link>
+    
+    <title>JSF-lab</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    
+    <h:outputStylesheet library="style" name="css/index.css" />
+</h:head>
+<h:body>
+    <div class="container-fluid">
+        <div class="row justify-content-md-center py-5">
+            <div class="col"></div>
+            <div class="col-auto">
+                <h5 class="font-monospace">Ефремов Марк Андреевич P3234</h5>
+                <h5 class="font-monospace">34567</h5>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+        <div class="row justify-content-md-center my-5 pt-1">
+            <div class="col"></div>
+            <div class="col-auto text-center">
+                <h1 id="clock-time">19:16:33</h1>
+                <h2 id="clock-date">23.11.2023</h2>
+            </div>
+            <div class="col"></div>
+        </div>
+        <div class="row justify-content-md-center pt-5 mt-5">
+            <div class="col"></div>
+            <div class="col-auto text-center pt-5">
+                <h:form>
+                    <h:commandButton class="link-button fs-5" value="Форма" action="toMain" />
+                </h:form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    
+    <h:outputScript library="scripts" name="index.js" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</h:body>
+</html>

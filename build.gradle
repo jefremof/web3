@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'ru.jefremov.prog'
+version ''
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    compileOnly('jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1')
+    compileOnly('jakarta.validation:jakarta.validation-api:3.0.2')
+    compileOnly('jakarta.ejb:jakarta.ejb-api:4.0.1')
+    compileOnly('jakarta.faces:jakarta.faces-api:3.0.0')
+    compileOnly('jakarta.servlet:jakarta.servlet-api:6.0.0')
+    compileOnly('jakarta.persistence:jakarta.persistence-api:3.1.0')
+    compileOnly 'jakarta.platform:jakarta.jakartaee-web-api:9.1.0'
+
+    implementation('org.hibernate:hibernate-core:6.0.2.Final')
+    implementation('org.postgresql:postgresql:42.2.27')
+}
+
+ext {
+    deploy_path = '???\\wildfly-preview-26.1.3.Final\\standalone\\deployments'
+    style_path = '???\\src\\main\\webapp\\resources\\style'
+}
+
+tasks.register('deleteArchive', Delete) {
+    delete files('build/libs/jsflab.war')
+}
+
+
+tasks.register('updateWildfly', Exec) {
+    dependsOn deleteArchive
+    dependsOn build
+    doFirst {
+        workingDir "$style_path"
+        commandLine 'cmd', '/c', 'sass --update --sourcemap=none --no-cache scss:css'
+    }
+    outputs.upToDateWhen { false }
+    deleteArchive.finalizedBy(build)
+    doLast {
+        copy {
+            from 'build/libs/jsflab.war'
+            into deploy_path
+        }
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+test {
+    useJUnitPlatform()
+}

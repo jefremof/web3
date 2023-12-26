@@ -1,0 +1,144 @@
+@import "linkbutton.scss";
+
+.incdec-button {
+    text-align: center;
+    background-color: #eee;
+    border-color: #eee;
+    outline: none;
+    border-style: solid;
+    width: 2ch;
+    padding: 0;
+
+    &:hover {
+        background-color: peachpuff;
+        border-color: peachpuff;
+    }
+}
+
+.indicator-x {
+    padding-left: 1%;
+    padding-right: 15%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    border: none;
+    border-color: lightgray;
+    display: inline-block;
+    width: 2ch;
+    user-select: none
+}
+
+.entry-label {
+    display: block;
+    margin-bottom: 2%;
+    color: #333;
+}
+
+.entry-field {
+    font-size: 21px;
+}
+
+.entry-area input[type="text"] {
+    width: 35%;
+    min-height: 30px;
+    border: none;
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    margin-bottom: 1px;
+
+    &:focus {
+        outline: none;
+        border-color: deepskyblue;
+        border-width: 2px;
+        margin-bottom: 0px;
+    }
+
+    &.invalid {
+        border-color: red;
+    }
+}
+
+$rselection_size: 25px;
+$varselection_size: 15px;
+
+.varselection {
+    display: inline-block;
+    text-align: center;
+    margin-right: 1%;
+
+    input[type="checkbox"] {
+        &:hover:after {
+            background-color: #e6eaff;
+            border-color: #e6eaff;
+        }
+
+        &:after {
+            content: "";
+            background-color: white;
+            border: 2px #eee solid;
+            height: $varselection_size;
+            width: $varselection_size;
+            display: inline-block;
+        }
+
+        &:checked:after {
+            content: "";
+            background-color: #39f;
+            border: 2px #39f solid;
+            height: $varselection_size;
+            width: $varselection_size;
+            display: inline-block;
+        }
+
+        margin-bottom: 10px;
+        margin-left: 0px;
+
+        & ~ span {
+            width: 4ch;
+            display: block;
+            text-align: right;
+            user-select: none;
+        }
+    }
+}
+
+.rselection,
+.varselection {
+    position: relative;
+    input[type="checkbox"] {
+        &:after {
+            height: $rselection_size;
+            width: $rselection_size;
+        }
+
+        &:checked:after {
+            height: $rselection_size;
+            width: $rselection_size;
+        }
+
+        margin-bottom: 20px;
+
+        & ~ span {
+            width: 2ch;
+            display: block;
+            text-align: right;
+            padding-left: 10px;
+        }
+    }
+}
+
+div.varselection-message {
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+}
+
+
+td:empty {
+    border: none;
+}
+
+#result-table {
+    th, tr {
+        min-width: 4ch;
+    }
+}
